@@ -1,10 +1,9 @@
 const jwt = require('jsonwebtoken');
+const secret = require('./secret').jwtSecret
 
 module.exports = {
     generateToken,
 }
-
-const secret =  process.env.JWT_SECRET || 'Secrets make friends safe.'
 
 function generateToken(user){
 

@@ -1,25 +1,23 @@
 const jwt = require('jsonwebtoken');
-const secret = require('./secret')
+const secret = require('./secret').jwtSecret
 
 module.exports = {
     authenticate
 }
-
-// const secret =  process.env.JWT_SECRET || 'There are no secrets'
 
 function authenticate(req, res, next){
     const token = req.get('Authorization');
 
     if(token){
         jwt.verify(token, secret, (err, decoded) => {
-            if(err) return res.status(401).json(err);
+            if(err) return res.status(401).send("no");
 
             req.decoded = decoded;
 
             next();
         });
     } else {
-        return res.status(401).json({
+        res.status(401).json({
             error: 'No token provided'
         })
     }
