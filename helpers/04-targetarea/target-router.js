@@ -1,6 +1,6 @@
 router = require('express').Router();
 
-const TargetAreas = require('./set-model');
+const TargetAreas = require('./target-model');
 
 router.get('/', async (req, res) => {
     try{
