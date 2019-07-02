@@ -50,6 +50,7 @@ router.get('/:workout_id/exercises/', async (req, res) => {
     try{
         let exercises = await Workouts.getWorkoutExercises(req.params.workout_id)
         if(exercises){
+            console.log(exercises)
             res.status(200).json(exercises)
         } else {
             res.status(404).send('workout exercises not found')
@@ -61,7 +62,7 @@ router.get('/:workout_id/exercises/', async (req, res) => {
 
 router.post('/:workout_id/exercises', async (req, res) => {
     try{
-        const exercise = await Workouts.addExerciseToWorkout({ name: req.body.name, targetArea: req.body.targetArea, workout_id: req.params.workout_id})
+        const exercise = await Workouts.addExerciseToWorkout({ name: req.body.name, workout_id: req.params.workout_id})
         if(exercise){
             res.status(200).json(exercise)
         } else {

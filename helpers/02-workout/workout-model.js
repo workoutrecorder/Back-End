@@ -30,7 +30,6 @@ function addExerciseToWorkout(exercise){
     return db('exercises')
     .insert({
         name: exercise.name,
-        targetArea: exercise.targetArea,
         workout_id: exercise.workout_id
     })
 }

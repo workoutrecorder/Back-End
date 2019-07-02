@@ -7,6 +7,7 @@ module.exports = {
     destroy,
     add,
     getUserWorkouts,
+    addWorkoutToUser
 }
 
 function find(){
@@ -39,4 +40,13 @@ function getUserWorkouts(userID){
         .join('users', 'users.id', 'workouts.user_id')
         .select('workouts.*' )
         .where('workouts.user_id', userID)
+}
+
+function addWorkoutToUser(workout){
+    return db('workouts')
+    .insert({
+        name: workout.name,
+        date: workout.date,
+        user_id: workout.user_id
+    })
 }
