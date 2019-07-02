@@ -37,4 +37,18 @@ router.get('/:user_id/workouts/', async (req, res) => {
     }
 })
 
+router.post('/:workout_id/workouts', async (req, res) => {
+    try{
+        const workout = await Users.addWorkoutToUser({ name: req.body.name, date: req.body.date, user_id: req.params.workout_id})
+        if(workout){
+            res.status(200).json({workout})
+        } else {
+            res.status(404).send('could not post workout for the user')
+        }
+    } catch(error){
+        res.status(500).json(error);
+    }
+})
+    
+
 module.exports = router;

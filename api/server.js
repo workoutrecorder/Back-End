@@ -17,11 +17,11 @@ server.use(helmet());
 server.use(cors());
 
 server.use('/auth', authRouter);
-server.use('/users', authenticate, userRouter);
-server.use('/workouts', authenticate, workoutRouter);
-server.use('/exercises', authenticate, exerciseRouter);
-server.use('/targets', authenticate, targetRouter);
-server.use('/sets', authenticate, setRouter);
+server.use('/users', userRouter);
+server.use('/workouts', workoutRouter);
+server.use('/exercises', exerciseRouter);
+server.use('/targets', targetRouter);
+server.use('/sets', setRouter);
 
 server.get('/', (req, res) => {
     res.send("I'm on it boss!")
