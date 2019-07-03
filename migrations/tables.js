@@ -92,6 +92,6 @@ exports.up = function(knex, Promise) {
             .dropTableIfExists('users')
             .dropTableIfExists('workouts')
             .dropTableIfExists('exercises')
-            .dropTableIfExists('targetArea')
+            .dropTableIfExists('targetAreas')
             .dropTableIfExists('sets')
   };
