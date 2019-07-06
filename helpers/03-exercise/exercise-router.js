@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 router.post('/:exercise_id/sets', async (req, res) => {
     try{
         const id = Number(req.params.exercise_id)
-        const set = await Exercises.addSetsToExercises({ reps: req.body.reps, weight: req.body.weight, exercise_id: id })
+        const set = await Exercises.addSetsToExercises({ reps: req.body.reps, weight: req.body.weight, exercise_id: id, user_id: req.body.user_id })
         if(set){
             res.status(200).json(set)
         } else {
@@ -50,7 +50,7 @@ router.post('/:exercise_id/sets', async (req, res) => {
 router.post('/:exercise_id/targetarea', async (req, res) => {
     try{
         const id = Number(req.params.exercise_id)
-        const targetArea = await Exercises.addTargetAreaToExercises({ name: req.body.name, exercise_id: id })
+        const targetArea = await Exercises.addTargetAreaToExercises({ name: req.body.name, exercise_id: id, user_id: req.body.user_id })
         if(targetArea){
             res.status(200).json(targetArea)
         } else {
