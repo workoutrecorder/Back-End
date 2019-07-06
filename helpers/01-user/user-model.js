@@ -7,7 +7,9 @@ module.exports = {
     destroy,
     add,
     getUserWorkouts,
-    addWorkoutToUser
+    addWorkoutToUser,
+    getUsersTarget,
+    getUsersSets,
 }
 
 function find(){
@@ -49,4 +51,18 @@ function addWorkoutToUser(workout){
         date: workout.date,
         user_id: workout.user_id
     })
+}
+
+function getUsersTarget(userID){
+    return db('targetAreas')
+        .join('users', 'users.id', 'targetAreas.user_id')
+        .select('targetAreas.*' )
+        .where('targetAreas.user_id', userID)
+}
+
+function getUsersSets(userID){
+    return db('sets')
+        .join('users', 'users.id', 'sets.user_id')
+        .select('sets.*' )
+        .where('sets.user_id', userID)
 }
