@@ -64,6 +64,13 @@ exports.up = function(knex, Promise) {
             .inTable('exercises')
             .onDelete('CASCADE')
             .onUpdate('CASCADE') //required
+
+          tbl.integer('user_id').notNullable()
+             .unsigned()
+             .references('id')
+             .inTable('users')
+             .onDelete('CASCADE')
+             .onUpdate('CASCADE')
     })
 
     .createTable('sets', (tbl) => {
@@ -84,6 +91,13 @@ exports.up = function(knex, Promise) {
             .inTable('exercises')
             .onDelete('CASCADE')
             .onUpdate('CASCADE') //required
+
+        tbl.integer('user_id').notNullable()
+            .unsigned()
+            .references('id')
+            .inTable('users')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE')
     })
   };
   
