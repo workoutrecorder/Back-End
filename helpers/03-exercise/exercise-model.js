@@ -34,7 +34,8 @@ function addSetsToExercises(set){
     .insert({
         reps: set.reps,
         weight: set.weight,
-        exercise_id: set.exercise_id
+        exercise_id: set.exercise_id,
+        user_id: set.user_id
     })
 }
 
@@ -42,7 +43,8 @@ function addTargetAreaToExercises(target){
     return db('targetAreas')
     .insert({
         name: target.name,
-        exercise_id: target.exercise_id
+        exercise_id: target.exercise_id,
+        user_id: target.user_id
     })
 }
 
